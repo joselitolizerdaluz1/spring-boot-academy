@@ -30,7 +30,7 @@ public class ValidationAspect {
      * ADVICE: Validate input parameters before creating a user
      */
     // TODO 14: Uncomment the @Before annotation to enable input validation
-    // @Before("createUserMethods()")
+    @Before("createUserMethods()")
     public void validateCreateUserInput(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         
@@ -74,7 +74,7 @@ public class ValidationAspect {
      * ADVICE: Validate input parameters before updating a user
      */
     // TODO 15: Uncomment the @Before annotation to enable update validation
-    // @Before("updateUserMethods()")
+    @Before("updateUserMethods()")
     public void validateUpdateUserInput(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         

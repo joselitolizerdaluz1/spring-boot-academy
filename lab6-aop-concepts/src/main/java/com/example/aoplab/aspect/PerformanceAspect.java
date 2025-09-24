@@ -25,7 +25,7 @@ public class PerformanceAspect {
      * This demonstrates how AOP can be used for performance measurement
      */
     // TODO 11: Uncomment the @Around annotation to enable performance monitoring
-    // @Around("serviceLayerMethods()")
+    @Around("serviceLayerMethods()")
     public Object measurePerformance(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.nanoTime();
         

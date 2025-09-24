@@ -44,7 +44,7 @@ public class LoggingAspect {
      * This advice runs before the target method executes
      */
     // TODO 2: Uncomment the @Before annotation to enable before advice for createUser method
-    // @Before("execution(* com.example.aoplab.service.UserService.createUser(..))")
+    @Before("execution(* com.example.aoplab.service.UserService.createUser(..))")
     public void logBeforeCreateUser(JoinPoint joinPoint) {
         System.out.println("=== BEFORE ADVICE ===");
         System.out.println("About to create user with arguments: " + Arrays.toString(joinPoint.getArgs()));
@@ -59,7 +59,7 @@ public class LoggingAspect {
      * This advice runs after the target method completes successfully
      */
     // TODO 3: Uncomment the @AfterReturning annotation to enable after returning advice
-    // @AfterReturning(pointcut = "execution(* com.example.aoplab.service.UserService.findUserById(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.example.aoplab.service.UserService.findUserById(..))", returning = "result")
     public void logAfterReturningFindUser(JoinPoint joinPoint, Object result) {
         System.out.println("=== AFTER RETURNING ADVICE ===");
         System.out.println("Method: " + joinPoint.getSignature().getName());
@@ -74,7 +74,7 @@ public class LoggingAspect {
      * This advice can execute code before, after, or instead of the target method
      */
     // TODO 4: Uncomment the @Around annotation to enable around advice
-    // @Around("execution(* com.example.aoplab.service.UserService.updateUser(..))")
+    @Around("execution(* com.example.aoplab.service.UserService.updateUser(..))")
     public Object logAroundUpdateUser(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("=== AROUND ADVICE - BEFORE ===");
         System.out.println("About to execute: " + joinPoint.getSignature().getName());
@@ -101,7 +101,7 @@ public class LoggingAspect {
      * This advice runs when the target method throws an exception
      */
     // TODO 5: Uncomment the @AfterThrowing annotation to enable after throwing advice
-    // @AfterThrowing(pointcut = "execution(* com.example.aoplab.service.UserService.deleteUser(..))", throwing = "exception")
+    @AfterThrowing(pointcut = "execution(* com.example.aoplab.service.UserService.deleteUser(..))", throwing = "exception")
     public void logAfterThrowingDeleteUser(JoinPoint joinPoint, Exception exception) {
         System.out.println("=== AFTER THROWING ADVICE ===");
         System.out.println("Method: " + joinPoint.getSignature().getName());
@@ -117,7 +117,7 @@ public class LoggingAspect {
      * This advice runs after the target method completes, whether it succeeds or throws an exception
      */
     // TODO 6: Uncomment the @After annotation to enable after advice
-    // @After("execution(* com.example.aoplab.service.UserService.getAllUsers(..))")
+    @After("execution(* com.example.aoplab.service.UserService.getAllUsers(..))")
     public void logAfterGetAllUsers(JoinPoint joinPoint) {
         System.out.println("=== AFTER ADVICE ===");
         System.out.println("Method: " + joinPoint.getSignature().getName() + " has completed");
@@ -130,7 +130,7 @@ public class LoggingAspect {
      * This advice uses the userServiceMethods() pointcut we defined earlier
      */
     // TODO 7: Uncomment the @Before annotation to enable pointcut reuse
-    // @Before("userServiceMethods()")
+    @Before("userServiceMethods()")
     public void logAllUserServiceMethods(JoinPoint joinPoint) {
         System.out.println("--- POINTCUT REUSE: Executing " + joinPoint.getSignature().getName() + " ---");
     }
@@ -140,7 +140,7 @@ public class LoggingAspect {
      * This advice only runs for methods that take a Long parameter
      */
     // TODO 8: Uncomment the @Before annotation to enable parameter-based advice
-    // @Before("userServiceMethodsWithLongParam()")
+    @Before("userServiceMethodsWithLongParam()")
     public void logMethodsWithLongParam(JoinPoint joinPoint) {
         System.out.println("--- METHOD WITH LONG PARAM: " + joinPoint.getSignature().getName() + " ---");
         System.out.println("First parameter (Long): " + joinPoint.getArgs()[0]);
@@ -151,7 +151,7 @@ public class LoggingAspect {
      * This advice only runs for methods that return a User object
      */
     // TODO 9: Uncomment the @AfterReturning annotation to enable return type-based advice
-    // @AfterReturning(pointcut = "userServiceMethodsReturningUser()", returning = "result")
+    @AfterReturning(pointcut = "userServiceMethodsReturningUser()", returning = "result")
     public void logUserReturningMethods(JoinPoint joinPoint, Object result) {
         System.out.println("--- USER RETURNING METHOD: " + joinPoint.getSignature().getName() + " ---");
         System.out.println("Returned User: " + result);
@@ -162,7 +162,7 @@ public class LoggingAspect {
      * This advice catches all exceptions from UserService methods
      */
     // TODO 10: Uncomment the @AfterThrowing annotation to enable global exception logging
-    // @AfterThrowing(pointcut = "userServiceMethods()", throwing = "exception")
+    @AfterThrowing(pointcut = "userServiceMethods()", throwing = "exception")
     public void logAllExceptions(JoinPoint joinPoint, Exception exception) {
         System.out.println("=== GLOBAL EXCEPTION LOGGING ===");
         System.out.println("Exception in method: " + joinPoint.getSignature().getName());

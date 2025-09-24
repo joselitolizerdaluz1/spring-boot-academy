@@ -31,7 +31,7 @@ public class SecurityAspect {
      * ADVICE: Simulate authentication check before controller methods
      */
     // TODO 12: Uncomment the @Before annotation to enable authentication
-    // @Before("controllerMethods()")
+    @Before("controllerMethods()")
     public void checkAuthentication(JoinPoint joinPoint) {
         System.out.println("=== AUTHENTICATION CHECK ===");
         System.out.println("Checking authentication for: " + joinPoint.getSignature().getName());
@@ -43,7 +43,7 @@ public class SecurityAspect {
      * ADVICE: Simulate authorization check for modification methods
      */
     // TODO 13: Uncomment the @Around annotation to enable authorization
-    // @Around("modificationMethods()")
+    @Around("modificationMethods()")
     public Object checkAuthorization(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("=== AUTHORIZATION CHECK ===");
         System.out.println("Checking authorization for: " + joinPoint.getSignature().getName());
